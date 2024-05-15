@@ -16,7 +16,7 @@ services:
    - APACHE_DOCUMENT_ROOT=/var/www/html/public
   ports:
    - 8082:80
-   - 8082:433
+   - 8075:433
   volumes:
    - ./src:/var/www/html
   depends_on:
