@@ -15,7 +15,7 @@ services:
   environment:
    - APACHE_DOCUMENT_ROOT=/var/www/html/public
   ports:
-   - 8081:80
+   - 8082:80
    - 8082:433
   volumes:
    - ./src:/var/www/html
