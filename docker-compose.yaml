@@ -7,21 +7,41 @@ networks:
 
 services:
 
- nginx: 
+ apache:
   build:
    context: .
-   dockerfile: nginx.dockerfile
-  container_name: nginx
+   dockerfile: apache.dockerfile
+  container_name: apache
+  environment:
+   - APACHE_DOCUMENT_ROOT=/var/www/html/public
+  ports:
+   - 8081:80
+   - 8082:433
+  volumes:
+   - ./src:/var/www/html
   depends_on:
    - php
    - mysql
-  ports:
-   - 8081:80
-   - 433:433
-  volumes:
-   - ./src:/var/www/html
   networks:
    - laravel
+
+  
+
+#  nginx: 
+#   build:
+#    context: .
+#    dockerfile: nginx.dockerfile
+#   container_name: nginx
+#   depends_on:
+#    - php
+#    - mysql
+#   ports:
+#    - 8081:80
+#    - 433:433
+#   volumes:
+#    - ./src:/var/www/html
+#   networks:
+#    - laravel
 
  php:
   # image: php:8.3.7-fpm-alpine3.19
